@@ -3,11 +3,11 @@
 
 
 public class studySessions {
-     private String ssname;
-     private String sstopic;
-     private String sstime;
-     private String sslocation;
-     private ArrayList<User> listAttending;
+     public String ssname;
+     public String sstopic;
+     public String sstime;
+     public String sslocation;
+     public ArrayList<User> listAttending;
 	 
 
 
