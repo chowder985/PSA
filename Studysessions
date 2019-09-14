@@ -1,0 +1,57 @@
+
+
+
+
+public class studySessions {
+     private String ssname;
+	 private String sstopic;
+	
+	 private ArrayList<User> listAttending;
+	 
+
+
+     public studySession(String name, String topic)  {
+		ssname = name;
+        sstopic = topic;
+	 }
+
+     public getSSName {
+         return ssname;
+     }
+     public getSSTopic {
+         return sstopic;
+     }
+
+     public showListAttending {
+
+          for(int i =0; i < listAttending.size(); i++) {
+           
+           System.out.println(listAttending(i).getName());
+           System.out.println(listAttending(i).getMajor());
+           System.out.println(listAttending(i).getYear());
+System.out.println();
+          }
+
+
+     }
+
+    public joinStudySession {
+
+      listAttending.add(User);
+
+
+    }
+
+     
+
+
+
+
+
+}
+
+
+
+
+
+
