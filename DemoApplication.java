@@ -5,17 +5,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DemoApplication {
-private String userName;
+//Course is an object
+	 private String userName;
 	 private String userMajor;
 	 private String userYear;
+	 private Course [] classListMinor;
+	 private Course [] classListMajor;
 
 
-     public User(String name, String Major, String year)  {
+     public User(String name, String Major, String year, Course[] a, Course [] b)  {
 		userName = name;
 		userMajor = major;
 		userYear = year;
+		classListMajor = a;
+		classListMinor = b;
 	 }
-
+	 
+      
     public string getName () {
 		return userName;
 	}
@@ -26,7 +32,12 @@ private String userName;
 	public string getYear() {
 		return userYear;
 	}
-
+	public Course [] getClassesMajor() {
+		return classListMajor;
+	}
+	public Course [] getClassesMinor() {
+		return classListMinor;
+	}
 	public void changeName (String x) {
 		userName = x;
 	}
@@ -37,13 +48,19 @@ private String userName;
 	public void changeYear(String z) {
 		userYear = z;
 	}
+		
+		
+         
+		
+	
+	
 
 
 
 	public static void main(String[] args) {
 
      
-
+    
 
 
 
@@ -55,5 +72,4 @@ private String userName;
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
 }
