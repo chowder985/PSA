@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="showPage('Profile')">Profile</a>
+        <a href="#" onclick="showPage('Courses')">Courses</a>
+        <a href="#" onclick="showPage('Friends')">Friends</a>
+        <a href="#" onclick="showPage('Chats')">Chats</a>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+    <button type="button" class="btn btn-primary" onclick="openNav()">X</button>
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main">
+        <section class="sections" id="Profile">
+            <div class="container">
+                <h1>Profile</h1>
+            </div>
+        </section>
+        <section class="sections" id="Courses">
+            <div class="container">
+                <h1>Courses</h1>
+            </div>
+        </section>
+        <section class="sections" id="Friends">
+            <div class="container">
+                <h1>Friends</h1>
+            </div>
+        </section>
+        <section class="sections" id="Chats">
+            <div class="container">
+                <h1>Chats</h1>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCeYozLvwgH80Zth8lLKX0_2gIo9yzfms0",
+            authDomain: "purdue-study-app.firebaseapp.com",
+            databaseURL: "https://purdue-study-app.firebaseio.com",
+            projectId: "purdue-study-app",
+            storageBucket: "purdue-study-app.appspot.com",
+            messagingSenderId: "493579766159",
+            appId: "1:493579766159:web:e091a9c6dc4f2d90b923fa"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</body>
+
+</html>
