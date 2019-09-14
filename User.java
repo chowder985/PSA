@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class User {
 //Course is an object
-	 private String userName;
-	 private String userMajor;
-	 private String userYear;
-	 private Course [] classListMinor;
-	 private Course [] classListMajor;
+	 public  String userName;
+	 public  String userMajor;
+	 public  String userYear;
+	 public  Course [] classListMinor;
+	 public  Course [] classListMajor;
 
 
      public User(String name, String Major, String year, Course[] a, Course [] b)  {
