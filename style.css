@@ -4,7 +4,7 @@
 }
 
 body{
-  font-family: 'Courier New', monospace;
+  font-family: 'Roboto', sans-serif;
   /* background: #1FA2FF;  /* fallback for old browsers */
   /* background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */ */
@@ -28,6 +28,13 @@ body{
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     box-shadow: 0 0 5px inset gray;
+  }
+
+  .sidenav h1 {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background-color: #a98c2c; 
   }
 
   /* The navigation menu links */
