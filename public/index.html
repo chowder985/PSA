@@ -14,6 +14,7 @@
   <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
   <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
   <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+  <script defer src="/__/firebase/6.6.1/firebase-firestore.js"></script>
   <!-- initialize the SDK after all desired features are loaded -->
   <script defer src="/__/firebase/init.js"></script>
 
@@ -25,21 +26,6 @@
     crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style> -->
 </head>
 
 <body>
@@ -54,29 +40,31 @@
   <!-- Use any element to open the sidenav -->
   <button id="navBtn" type="button" class="btn btn-primary" onclick="openNav()">X</button>
 
+  <!-- <div id="login">
+    <button class="btn btn-primary" id="loginBtn">Login with Google</button>
+  </div> -->
+
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
     <section class="sections" id="Profile">
       <div class="container">
         <div id="user_info">
-          <h1 id="full_name">Full name</h1>
-          <h3><span id="major">Computer Science</span> - <span id="year">2023</span></h3>
+          <h1><input id="first-name" name="firstname" type="text" placeholder="First Name"> <input id="last-name"
+              type="text" name="lastname" placeholder="Last Name"></h1>
+          <h3><input id="major" type="text" name="major" placeholder="Major"> - <input id="year" type="text" name="year"
+              placeholder="Year">
+          </h3>
+          <button id="loginBtn" class="btn btn-primary" style="margin-top: 5%">Submit</button>
         </div>
       </div>
     </section>
     <section class="sections" id="Courses">
       <div id="container">
         <h1 id="course-list">Course List <i class="fa fa-plus" aria-hidden="true"></i></h1>
-        <input type="text" placeholder="Add Course">
+        <input id="addCourse" type="text" placeholder="Add Course">
         <ul>
-          <!-- <li><span class="trash"><i class="fa fa-trash"></i></span> Go to potions class</li>
-                    <li><span class="trash"><i class="fa fa-trash"></i></span> Buy new robes</li>
-                    <li><span class="trash"><i class="fa fa-trash"></i></span> Visit Hagrid</li> -->
-        </ul>
-        <!-- <button id="add-course">+</button>
-                <ul>
 
-                </ul> -->
+        </ul>
       </div>
     </section>
     <section class="sections" id="Friends">
@@ -109,29 +97,6 @@
     };
   </script>
   <script src="main.js"></script>
-
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      // // The Firebase SDK is initialized and available here!
-      //
-      // firebase.auth().onAuthStateChanged(user => { });
-      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-      // firebase.messaging().requestPermission().then(() => { });
-      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      //
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-      try {
-        let app = firebase.app();
-        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-      }
-    });
-  </script> -->
 </body>
 
 </html>

@@ -1,12 +1,18 @@
-var full_name;
-var courseArray = ["CS 180", "MA 161", "SCLA 101", "ENGL 106"];
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-//var firebase = require("firebase/app");
+var courseArray = [];
 
-// Add the Firebase products that you want to use
-// require("firebase/auth");
-// require("firebase/firestore");
+function googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+        .then(result => {
+            const user = result.user;
+            console.log(user.displayName);
+        })
+        .catch(console.log)
+
+    document.getElementById("login").style.display = "none";
+    document.getElementsByClassName("sidenav")[0].style.display = 'block';
+}
 
 $(document).ready((event) => {
     if (localStorage.getItem("last")) {
@@ -16,21 +22,56 @@ $(document).ready((event) => {
         localStorage.setItem("last", "Profile");
     }
 
-    full_name = document.getElementById("full_name");
-    if (full_name) {
-        $.get("https://jsonplaceholder.typicode.com/todos/1", function (data, status) {
-            full_name.innerHTML = "" + data.title
+    const app = firebase.app();
+    const db = firebase.firestore();
+
+    if (localStorage.getItem("usersId")) {
+        const myUser = db.collection('users').doc(localStorage.getItem("usersId"));
+
+        myUser.onSnapshot(doc => {
+            const data = doc.data();
+            document.getElementById("first-name").value = data.firstname;
+            document.getElementById("last-name").value = data.lastname;
+            document.getElementById("major").value = data.major;
+            document.getElementById("year").value = data.year;
+            if (data.courses) {
+                courseArray = data.courses;
+            } else {
+                courseArray = [];
+            }
+            $('.course-item').remove();
+            for (i = 0; i < courseArray.length; i++) {
+                $("ul").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + courseArray[i] + "</li>");
+                console.log(courseArray);
+            }
         });
     }
 
-    for (i = 0; i < courseArray.length; i++) {
-        $("ul").append("<li><span class='trash'><i class='fa fa-trash'></i></span>" + courseArray[i] + "</li>");
-        console.log(courseArray);
-    }
+    $("#loginBtn").click(() => {
+        alert("Account Created!");
+        var firstname = document.getElementById("first-name").value;
+        var lastname = document.getElementById("last-name").value;
+        var major = document.getElementById("major").value;
+        var year = document.getElementById("year").value;
+        console.log(firstname + " " + lastname + " " + major + " " + year);
+        db.collection("users").add({
+            firstname: firstname,
+            lastname: lastname,
+            major: major,
+            year: year,
+        })
+            .then(function (docRef) {
+                localStorage.setItem("usersId", docRef.id);
+                console.log(docRef.id)
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            })
+    })
 
-    $("ul").on("click", "li", function () {
-        $(this).toggleClass("completed");
-    });
+    // $("ul").on("click", "li", function () {
+    //     $(this).toggleClass("completed");
+    // });
 
     $("ul").on("click", ".trash", function (event) {
         $(this).parent().fadeOut(500, function () {
@@ -38,6 +79,12 @@ $(document).ready((event) => {
             console.log($(this).text());
             console.log(courseArray);
             $(this).remove();
+            db.collection("users").doc(localStorage.getItem("usersId")).update({
+                courses: courseArray
+            })
+                .catch(() => {
+                    console.error("Error adding document: ", error);
+                })
         });
         event.stopPropagation();
     });
@@ -47,7 +94,14 @@ $(document).ready((event) => {
             var todoText = $(this).val();
             $(this).val("");
             courseArray.push(todoText);
-            $("ul").append("<li><span class='trash'><i class='fa fa-trash'></i></span>" + todoText + "</li>");
+            $("ul").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + todoText + "</li>");
+
+            db.collection("users").doc(localStorage.getItem("usersId")).update({
+                courses: courseArray
+            })
+                .catch(() => {
+                    console.error("Error adding document: ", error);
+                })
         }
     });
 
@@ -80,10 +134,3 @@ function showPage(shown) {
 
     localStorage.setItem("last", shown);
 }
-
-// function renderCourseList() {
-//     $('li').remove();
-//     for (i = 0; i < courseArray.length; i++) {
-//         $('ul').append("<li><a class='course-list' href='#'>" + courseArray[i] + "</a> - <button class='delete-course' id='" + i + "'>-</button></li>");
-//     }
-// }
