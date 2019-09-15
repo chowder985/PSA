@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to Firebase Hosting</title>
 
-    <style media="screen">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
+  <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
+  <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
       #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
@@ -28,38 +39,99 @@
         body, #message { margin-top: 0; background: white; box-shadow: none; }
         body { border-top: 16px solid #ffa100; }
       }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    </style> -->
+</head>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#" onclick="showPage('Profile')">Profile</a>
+    <a href="#" onclick="showPage('Courses')">Courses</a>
+    <a href="#" onclick="showPage('Friends')">Friends</a>
+    <a href="#" onclick="showPage('Chats')">Chats</a>
+  </div>
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+  <!-- Use any element to open the sidenav -->
+  <button id="navBtn" type="button" class="btn btn-primary" onclick="openNav()">X</button>
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div id="main">
+    <section class="sections" id="Profile">
+      <div class="container">
+        <div id="user_info">
+          <h1 id="full_name">Full name</h1>
+          <h3><span id="major">Computer Science</span> - <span id="year">2023</span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sections" id="Courses">
+      <div id="container">
+        <h1 id="course-list">Course List <i class="fa fa-plus" aria-hidden="true"></i></h1>
+        <input type="text" placeholder="Add Course">
+        <ul>
+          <!-- <li><span class="trash"><i class="fa fa-trash"></i></span> Go to potions class</li>
+                    <li><span class="trash"><i class="fa fa-trash"></i></span> Buy new robes</li>
+                    <li><span class="trash"><i class="fa fa-trash"></i></span> Visit Hagrid</li> -->
+        </ul>
+        <!-- <button id="add-course">+</button>
+                <ul>
+
+                </ul> -->
+      </div>
+    </section>
+    <section class="sections" id="Friends">
+      <div class="container">
+        <h1>Friends</h1>
+      </div>
+    </section>
+    <section class="sections" id="Chats">
+      <div class="container">
+        <h1>Chats</h1>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCeYozLvwgH80Zth8lLKX0_2gIo9yzfms0",
+      authDomain: "purdue-study-app.firebaseapp.com",
+      databaseURL: "https://purdue-study-app.firebaseio.com",
+      projectId: "purdue-study-app",
+      storageBucket: "purdue-study-app.appspot.com",
+      messagingSenderId: "493579766159",
+      appId: "1:493579766159:web:f3b347be293bde9bb923fa"
+    };
+  </script>
+  <script src="main.js"></script>
+
+  <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script> -->
+</body>
+
 </html>
