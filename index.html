@@ -12,6 +12,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -37,11 +39,18 @@
             </div>
         </section>
         <section class="sections" id="Courses">
-            <div class="container">
-                <h1>Your Courses</h1>
-                <button id="add-course">+</button>
-                <button id="delete-course">-</button>
-                <p>hekhj</p>
+            <div id="container">
+                <h1 id="course-list">Course List <i class="fa fa-plus" aria-hidden="true"></i></h1>
+                <input type="text" placeholder="Add Course">
+                <ul>
+                    <!-- <li><span class="trash"><i class="fa fa-trash"></i></span> Go to potions class</li>
+                    <li><span class="trash"><i class="fa fa-trash"></i></span> Buy new robes</li>
+                    <li><span class="trash"><i class="fa fa-trash"></i></span> Visit Hagrid</li> -->
+                </ul>
+                <!-- <button id="add-course">+</button>
+                <ul>
+
+                </ul> -->
             </div>
         </section>
         <section class="sections" id="Friends">
@@ -56,6 +65,8 @@
         </section>
     </div>
 
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
@@ -72,7 +83,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+        //firebase.analytics();
     </script>
     <script src="main.js"></script>
 </body>
