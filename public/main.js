@@ -109,11 +109,16 @@ $(document).ready((event) => {
             })
     })
 
-    // $("ul").on("click", "li", function () {
-    //     $(this).toggleClass("completed");
+    // $(".friends").on("click", "li", function () {
+    //     friendsArray.forEach((e) => {
+    //         if (e.friendName == $(this).text().substring(0, $(this).text().indexOf(','))) {
+    //             alert(e.fri);
+    //         }
+    //     })
+    //     console.log($(this).text().substring(0, $(this).text().indexOf(',')));
     // });
 
-    $("ul").on("click", ".trash", function (event) {
+    $(".course").on("click", ".trash", function (event) {
         $(this).parent().fadeOut(500, function () {
             courseArray.splice(courseArray.indexOf($(this).text()), 1);
             console.log($(this).text());
