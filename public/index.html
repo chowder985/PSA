@@ -34,7 +34,7 @@
     <a href="#" onclick="showPage('Profile')">Profile</a>
     <a href="#" onclick="showPage('Courses')">Courses</a>
     <a href="#" onclick="showPage('Friends')">Friends</a>
-    <a href="#" onclick="showPage('Chats')">Chats</a>
+    <a href="#" onclick="showPage('Groups')">Groups</a>
   </div>
 
   <!-- Use any element to open the sidenav -->
@@ -75,9 +75,28 @@
         </ul>
       </div>
     </section>
-    <section class="sections" id="Chats">
+     <section class="sections" id="Groups">
       <div class="container">
-        <h1>Chats</h1>
+
+
+
+
+        <h1>Create Group</h1>
+          <div id="group_create">
+            <h1><input id="Group Name" name="groupName" type="text" placeholder="Group Name"></h1>
+            <h3><input id="Description" type="text" name="description" placeholder="Description">
+                <input id="Course" type="text" name="course" placeholder="Course">
+                <input id="Add Members" type="text" name="addMembers"placeholder="Add Members"></h3>
+            <button id="groupMakeBtn" class="btn btn-primary" style="margin-top: 5%">Submit</button>
+          </div>
+        <h1>Join Group</h1>
+        <div id = "group_join">
+          <h3><input id="joinGroup" type="text" placeholder="Join Group"></h3>
+          <button id="joinGroupBtn" class="btn btn-primary" style="margin-top: 5%">Submit</button>
+        </div>
+
+
+
       </div>
     </section>
     <section class="sections" id="Welcome">
