@@ -58,19 +58,21 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
     <script>
-        const firebaseConfig = {
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
             apiKey: "AIzaSyCeYozLvwgH80Zth8lLKX0_2gIo9yzfms0",
             authDomain: "purdue-study-app.firebaseapp.com",
             databaseURL: "https://purdue-study-app.firebaseio.com",
             projectId: "purdue-study-app",
             storageBucket: "purdue-study-app.appspot.com",
             messagingSenderId: "493579766159",
-            appId: "1:493579766159:web:e091a9c6dc4f2d90b923fa"
+            appId: "1:493579766159:web:f3b347be293bde9bb923fa"
         };
-
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
     </script>
     <script src="main.js"></script>
 </body>
