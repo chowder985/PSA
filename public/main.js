@@ -55,35 +55,34 @@ $(document).ready((event) => {
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
                     // doc.data() is never undefined for query doc snapshots
-                    //console.log(doc.id, " => ", doc.data());
-                    if ((localStorage.getItem("usersId") != doc.id) && (doc.data().courses.length > 0)) {
+                    if (localStorage.getItem("usersId") != doc.id) {
+                        console.log(doc.id, " => ", doc.data());
                         var cour = [];
                         courseArray.forEach((e) => {
                             for (var i = 0; i < doc.data().courses.length; i++) {
                                 if (e == doc.data().courses[i]) {
                                     cour.push(e);
+                                    console.log(cour);
                                 }
                             }
                         })
                         if (cour.length > 0) {
                             friendsArray.push({
                                 friendId: doc.id,
+                                friendName: doc.data().firstname,
                                 coursesInCommon: cour
                             })
                         }
                     }
                 });
+                for (var i = 0; i < friendsArray.length; i++) {
+                    $(".friends").append("<li class='friend-item'><span class='trash'><i class='fa fa-trash'></i></span>" + friendsArray[i].friendName + ", Courses in Common: " + friendsArray[i].coursesInCommon.join(", ") + "</li>");
+                }
+                console.log(friendsArray);
             })
             .catch(function (error) {
                 console.log("Error getting documents: ", error);
             });
-        console.log(friendsArray[0]);
-        for (var i = 0; i < friendsArray.length; i++) {
-            console.log(friendsArray[i].friendId);
-            $(".friends").append("<li class='friend-item'><span class='trash'><i class='fa fa-trash'></i></span>" + friendsArray[i].friendId + "</li>");
-            console.log(friendsArray[i].friendId);
-        }
-        console.log(friendsArray);
     }
 
     $("#loginBtn").click(() => {
