@@ -32,7 +32,7 @@ body{
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   }
-  
+
   /* The navigation menu links */
   .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -42,13 +42,13 @@ body{
     display: block;
     transition: 0.3s;
   }
-  
+
   /* When you mouse over the navigation links, change their color */
   .sidenav a:hover {
     text-decoration-line: none;
     color: #f1f1f1;
   }
-  
+
   /* Position and style the close button (top right corner) */
   .sidenav .closebtn {
     position: absolute;
@@ -57,7 +57,7 @@ body{
     font-size: 36px;
     margin-left: 50px;
   }
-  
+
   /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #main {
     transition: margin-left .5s;
@@ -79,6 +79,11 @@ body{
     padding-top: 30vh;
   }
 
+  #Profile #group_create{
+    text-align: center;
+    padding-top: 30vh;
+  }
+
   #course-list{
     background: #2980b9;
     color: white;
@@ -88,22 +93,22 @@ body{
     font-size: 24px;
     font-weight: normal;
   }
-  
+
   .fa-plus{
     float: right;
   }
-  
+
   li{
     background: #fff;
     height: 40px;
     line-height: 40px;
     color: #666;
   }
-  
+
   li:nth-child(2n){
     background: #f7f7f7;
   }
-  
+
   span.trash{
     /* background: #e74c3c; */
     height: 40px;
@@ -115,12 +120,12 @@ body{
     transition: 0.2s linear;
     opacity: 0;
   }
-  
+
   li:hover span.trash{
     width: 40px;
     opacity: 1.0;
   }
-  
+
   #addCourse{
     font-size: 18px;
     background: #f7f7f7;
@@ -130,31 +135,31 @@ body{
     color: #2980b9;
     border: 3px solid rgba(0, 0, 0, 0);
   }
-  
+
   #addCourse:focus{
     background: white;
     border: 3px solid #2980b9;
     outline: none;
   }
-  
+
   #container{
     max-width: 100%;
     background: #f7f7f7;
     margin: 0 auto;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   }
-  
+
   .completed{
     color: gray;
     text-decoration: line-through;
   }
-  
+
   ul{
     list-style: none;
     margin: 0;
     padding: 0;
-  }  
-  
+  }
+
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
