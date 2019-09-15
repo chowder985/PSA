@@ -1,18 +1,19 @@
 var courseArray = [];
+let friendsArray = [];
 
-function googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+// function googleLogin() {
+//     const provider = new firebase.auth.GoogleAuthProvider();
 
-    firebase.auth().signInWithPopup(provider)
-        .then(result => {
-            const user = result.user;
-            console.log(user.displayName);
-        })
-        .catch(console.log)
+//     firebase.auth().signInWithPopup(provider)
+//         .then(result => {
+//             const user = result.user;
+//             console.log(user.displayName);
+//         })
+//         .catch(console.log)
 
-    document.getElementById("login").style.display = "none";
-    document.getElementsByClassName("sidenav")[0].style.display = 'block';
-}
+//     document.getElementById("login").style.display = "none";
+//     document.getElementsByClassName("sidenav")[0].style.display = 'block';
+// }
 
 $(document).ready((event) => {
     if (localStorage.getItem("last")) {
@@ -40,11 +41,49 @@ $(document).ready((event) => {
                 courseArray = [];
             }
             $('.course-item').remove();
-            for (i = 0; i < courseArray.length; i++) {
-                $("ul").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + courseArray[i] + "</li>");
+            for (var i = 0; i < courseArray.length; i++) {
+                $(".course").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + courseArray[i] + "</li>");
                 console.log(courseArray);
             }
         });
+
+        calculateFriends();
+    }
+
+    function calculateFriends() {
+        db.collection('users').get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    //console.log(doc.id, " => ", doc.data());
+                    if ((localStorage.getItem("usersId") != doc.id) && (doc.data().courses.length > 0)) {
+                        var cour = [];
+                        courseArray.forEach((e) => {
+                            for (var i = 0; i < doc.data().courses.length; i++) {
+                                if (e == doc.data().courses[i]) {
+                                    cour.push(e);
+                                }
+                            }
+                        })
+                        if (cour.length > 0) {
+                            friendsArray.push({
+                                friendId: doc.id,
+                                coursesInCommon: cour
+                            })
+                        }
+                    }
+                });
+            })
+            .catch(function (error) {
+                console.log("Error getting documents: ", error);
+            });
+        console.log(friendsArray[0]);
+        for (var i = 0; i < friendsArray.length; i++) {
+            console.log(friendsArray[i].friendId);
+            $(".friends").append("<li class='friend-item'><span class='trash'><i class='fa fa-trash'></i></span>" + friendsArray[i].friendId + "</li>");
+            console.log(friendsArray[i].friendId);
+        }
+        console.log(friendsArray);
     }
 
     $("#loginBtn").click(() => {
@@ -94,7 +133,7 @@ $(document).ready((event) => {
             var todoText = $(this).val();
             $(this).val("");
             courseArray.push(todoText);
-            $("ul").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + todoText + "</li>");
+            $(".course").append("<li class='course-item'><span class='trash'><i class='fa fa-trash'></i></span>" + todoText + "</li>");
 
             db.collection("users").doc(localStorage.getItem("usersId")).update({
                 courses: courseArray
