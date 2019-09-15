@@ -1,3 +1,5 @@
+var full_name;
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -19,8 +21,24 @@ function showPage(shown) {
     document.getElementById(shown).style.display = 'block';
     if (screen.width < 720)
         closeNav();
+
+    localStorage.setItem("last", shown);
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('Profile').style.display = 'block';
+    if (localStorage.getItem("last")) {
+        document.getElementById(localStorage.getItem("last")).style.display = 'block';
+    } else {
+        document.getElementById('Profile').style.display = 'block';
+        localStorage.setItem("last", "Profile");
+    }
+
+    full_name = document.getElementById("full_name");
+    if (full_name) {
+        $.get("https://jsonplaceholder.typicode.com/todos/1", function (data, status) {
+            full_name.innerHTML = "" + data.title
+        });
+    }
+
+
 });

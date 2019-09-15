@@ -57,13 +57,20 @@
     transition: margin-left .5s;
   }
 
-  button{
+  #navBtn{
     position: absolute;
+    top:0;
+    left: 0;
     opacity: 0.2;
   }
 
   button:active{
       opacity: 1;
+  }
+
+  #Profile #user_info{
+    text-align: center;
+    padding-top: 30vh;
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
