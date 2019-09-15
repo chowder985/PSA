@@ -59,10 +59,12 @@ $(document).ready((event) => {
                         console.log(doc.id, " => ", doc.data());
                         var cour = [];
                         courseArray.forEach((e) => {
-                            for (var i = 0; i < doc.data().courses.length; i++) {
-                                if (e == doc.data().courses[i]) {
-                                    cour.push(e);
-                                    console.log(cour);
+                            if (doc.data().courses != undefined) {
+                                for (var i = 0; i < doc.data().courses.length; i++) {
+                                    if (e == doc.data().courses[i]) {
+                                        cour.push(e);
+                                        console.log(cour);
+                                    }
                                 }
                             }
                         })
